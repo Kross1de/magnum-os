@@ -97,3 +97,4 @@ uint32_t Port32Bit::Read()
 {
     return Read32(portnumber);
 }
+
