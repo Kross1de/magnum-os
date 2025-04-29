@@ -2,7 +2,7 @@ GCCPARAMS = -m32 -fno-use-cxa-atexit -nostdlib -fno-builtin -fno-rtti -fno-excep
 ASPARAMS = --32
 LDPARAMS = -melf_i386
 
-objects = loader.o gdt.o port.o interruptstubs.o interrupts.o keyboard.o mouse.o kernel.o
+objects = loader.o gdt.o driver.o port.o interruptstubs.o interrupts.o keyboard.o mouse.o kernel.o
 
 
 run: magnum.iso
@@ -22,8 +22,7 @@ magnum.iso: magnum.bin
 	mkdir iso/boot
 	mkdir iso/boot/grub
 	cp magnum.bin iso/boot/magnum.bin
-	echo 'set timeout=0'                      > iso/boot/grub/grub.cfg
-	echo 'set default=0'                     >> iso/boot/grub/grub.cfg
+	echo 'set timeout=5'                      > iso/boot/grub/grub.cfg
 	echo ''                                  >> iso/boot/grub/grub.cfg
 	echo 'menuentry "MagnumOS" {' >> iso/boot/grub/grub.cfg
 	echo '  multiboot /boot/magnum.bin'    >> iso/boot/grub/grub.cfg
